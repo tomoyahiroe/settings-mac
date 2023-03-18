@@ -1,0 +1,33 @@
+# start to change charactor green
+greenS(){
+  echo -e "\e[32m"
+}
+# finish to change charactor 
+greenF(){
+  echo -e "\e[00m"
+}
+gcommit () {
+    greenS
+    echo git add .
+    git add .
+    echo git commit -m $1
+    git commit -m $1
+    greenF
+}
+glog () {
+    greenS
+    echo "git log visually"
+    git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"
+    greenF
+}
+jsts () {
+  greenS
+  echo "before"
+  find . -name "*.js"
+  echo "\n\n"
+  for a in *.js; do mv -- "$a" "${a%.js}.ts"; done
+  echo "after"
+  find . -name "*.ts"
+  echo "Done!"
+  greenF
+}

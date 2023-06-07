@@ -25,11 +25,16 @@ inoremap <C-n> <Down>
 " Escを2回押すとハイライトを消す"
 noremap <Esc><Esc> :nohlsearch<CR>
 
+" ターミナル設定
+tnoremap <Esc> <C-\><C-n>
+command! -nargs=* T split | wincmd j | resize 10 | terminal zsh<args>
+autocmd TermOpen * startinsert
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "LSPとか管理する素晴らしいプラグイン
 Plug 'tpope/vim-repeat' "繰り返し機能の補強
 Plug 'terryma/vim-expand-region' "選択範囲を+と-で補強
-" Plug 'cohama/lexima.vim' "閉じ括弧系を補完してくれている
+Plug 'cohama/lexima.vim' "閉じ括弧系を補完してくれている
 Plug 'tpope/vim-surround' "括弧やペアの置換をcsコマンドで
 Plug 'tpope/vim-commentary' "ノーマルモードでgccと打つとコメントアウトできる
 Plug 'lambdalisue/fern.vim' "ファイラープラグイン
@@ -42,6 +47,7 @@ Plug 'tpope/vim-fugitive' " :Gでgitを使える
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } "goの自動フォーマットや補完
 call plug#end()
 
+
 " カラーテーマの設定
 let g:gruvbox_contrast_dark = 'hard'
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -51,7 +57,10 @@ let g:bookmark_sign = '>>'
 
 "サイドバーにフォルダを展開するショートカット作成
 " Ctrl+nでファイルツリーを表示/非表示する
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+nnoremap <silent><C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+let g:fern#default_hidden=1 " 隠しファイルを表示する
+let g:fern#renderer = 'nerdfont'
+let g:fern#renderer#nerdfont#indent_markers = 1
 
 " prettier settings
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
@@ -84,10 +93,9 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+" inoremap <silent><expr> <CR> pum#visible() ? <Cmd>call pum#map#confirm() : lexima#expand("\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>", 'i')
+inoremap <silent><expr> <Leader><CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -217,3 +225,16 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" nvim 起動時
+if has('vim_starting')
+  set shell=bash\ -l
+endif
+
+" 1. 画面下部にターミナルモードを表示
+autocmd VimEnter * below 10sp | terminal zsh
+call system('source ~/.zprofile ~/.zshrc')
+" 3. 画面左側にファイラーをサイドバーとして表示
+autocmd VimEnter * nested :Fern . -drawer -width=30
+" 4. Vim起動時にノーマルモードで起動
+autocmd VimEnter,GUIEnter * nested :normal! <Esc>

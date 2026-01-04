@@ -1,0 +1,130 @@
+{
+  // "editor.wordWrap": "on",
+  "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": true,
+  // "scm.diffDecorations": "none",
+  "vim.useSystemClipboard": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.lineHeight": 1.7,
+  "editor.lineNumbers": "relative",
+  "editor.editContext": false,
+  //FIG設定
+  "editor.accessibilitySupport": "off",
+  "[html]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[Nuxt]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+
+  "emmet.triggerExpansionOnTab": true,
+  "git.autofetch": true,
+  "git.suggestSmartCommit": false,
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2, IncludeBlocks: Merge, IndentGotoLabels: true, KeepEmptyLinesAtTheStartOfBlocks: true}",
+
+  "files.autoSave": "onFocusChange",
+  "workbench.iconTheme": "material-icon-theme",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.parameterHints.enabled": true,
+  "editor.hover.enabled": "on",
+  "markdown.marp.outlineExtension": false,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "php-cs-fixer.lastDownload": 1678172844733,
+
+  // editorビジュアル
+  "editor.minimap.enabled": false,
+  "explorer.openEditors.visible": 1,
+  "workbench.colorCustomizations": {
+    "editor.background": "#1d2630",
+    "panel.background": "#1d2630"
+  },
+  // terminal ビジュアル
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.4,
+  "terminal.integrated.cursorStyle": "block",
+  "redhat.telemetry.enabled": true,
+  "workbench.startupEditor": "none",
+  "editor.inlineSuggest.enabled": true,
+
+
+  "markuplint.enable": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "dotenv": false,
+    "html": false
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "markdown.marp.themes": [
+    "https://raw.githubusercontent.com/rnd195/my-marp-themes/live/border.css",
+    "https://raw.githubusercontent.com/rnd195/my-marp-themes/live/gradient.css",
+    "https://raw.githubusercontent.com/rnd195/my-marp-themes/live/graph_paper.css"
+  ],
+  "window.zoomLevel": 2,
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "files.associations": {
+    ".env*": "dotenv"
+  },
+  "editor.wordWrap": "on",
+  "git.openRepositoryInParentFolders": "never",
+  "jupyter.askForKernelRestart": false,
+  "git.path": "/opt/homebrew/bin/git",
+  "docker.extension.enableComposeLanguageServer": false,
+  "markdown.marp.html": "all",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "github.copilot.selectedCompletionModel": "",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}
